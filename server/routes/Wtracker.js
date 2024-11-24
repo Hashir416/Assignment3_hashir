@@ -26,97 +26,93 @@ router.get('/', async (req, res, next) => {
         });
     }
 });
-/* Create Operation --> Get route for displaying me the Add Page */
-router.get('/add',async(req,res,next)=>{
-    try{
-        res.render('Book/add',{
-            title: 'Add Book'
-        })
-    }
-    catch(err)
-    {
+/* Create Operation --> Get route for displaying the Add Page */
+router.get('/add', async (req, res, next) => {
+    try {
+        res.render('Workout/add', { // Changed 'Book/add' to 'Workout/add'
+            title: 'Add Workout' // Changed 'Add Book' to 'Add Workout'
+        });
+    } catch (err) {
         console.error(err);
-        res.render('Book/list',{
-            error:'Error on the server'
-        })
+        res.render('Workout/list', { // Changed 'Book/list' to 'Workout/list'
+            error: 'Error on the server'
+        });
     }
 });
+
 /* Create Operation --> Post route for processing the Add Page */
-router.post('/add',async(req,res,next)=>{
-    try{
-        let newBook = Book({
-            "Name":req.body.Name,
-            "Author":req.body.Author,
-            "Published":req.body.Published,
-            "Description":req.body.Description,
-            "Price":req.body.Price
+router.post('/add', async (req, res, next) => {
+    try {
+        let newWorkout = Workout({ // Changed newBook to newWorkout and Book to Workout
+            "date": req.body.date, // Updated fields to match the Workout schema
+            "exercise": req.body.exercise,
+            "sets": req.body.sets,
+            "reps": req.body.reps,
+            "weight": req.body.weight,
+            "focus": req.body.focus
         });
-        Book.create(newBook).then(()=>{
-            res.redirect('/bookslist');
-        })
-    }
-    catch(err)
-    {
+        Workout.create(newWorkout).then(() => { // Changed Book.create to Workout.create
+            res.redirect('/workoutlist'); // Changed '/bookslist' to '/workoutlist'
+        });
+    } catch (err) {
         console.error(err);
-        res.render('Book/list',{
-            error:'Error on the server'
-        })
+        res.render('Workout/list', { // Changed 'Book/list' to 'Workout/list'
+            error: 'Error on the server'
+        });
     }
 });
-/* Update Operation --> Get route for displaying me the Edit Page */
-router.get('/edit/:id',async(req,res,next)=>{
-    try{
+/* Update Operation --> Get route for displaying the Edit Page */
+router.get('/edit/:id', async (req, res, next) => {
+    try {
         const id = req.params.id;
-        const bookToEdit= await Book.findById(id);
-        res.render('Book/edit',
-            {
-                title:'Edit Book',
-                Book:bookToEdit
-            }
-        )
-    }
-    catch(err)
-    {
-        console.error(err);
-        next(err); // passing the error
-    }
-});
-/* Update Operation --> Post route for processing the Edit Page */ 
-router.post('/edit/:id',async(req,res,next)=>{
-    try{
-        let id=req.params.id;
-        let updatedBook = Book({
-            "_id":id,
-            "Name":req.body.Name,
-            "Author":req.body.Author,
-            "Published":req.body.Published,
-            "Description":req.body.Description,
-            "Price":req.body.Price
+        const workoutToEdit = await Workout.findById(id); // Changed Book to Workout
+        res.render('Workout/edit', { // Changed 'Book/edit' to 'Workout/edit'
+            title: 'Edit Workout', // Changed 'Edit Book' to 'Edit Workout'
+            Workout: workoutToEdit // Changed Book to Workout
         });
-        Book.findByIdAndUpdate(id,updatedBook).then(()=>{
-            res.redirect('/bookslist')
-        })
-    }
-    catch(err){
+    } catch (err) {
         console.error(err);
-        res.render('Book/list',{
-            error:'Error on the server'
-        })
+        next(err); // Passing the error
     }
 });
+
+/* Update Operation --> Post route for processing the Edit Page */
+router.post('/edit/:id', async (req, res, next) => {
+    try {
+        let id = req.params.id;
+        let updatedWorkout = Workout({ // Changed Book to Workout and updatedBook to updatedWorkout
+            "_id": id,
+            "date": req.body.date, // Updated fields to match the Workout schema
+            "exercise": req.body.exercise,
+            "sets": req.body.sets,
+            "reps": req.body.reps,
+            "weight": req.body.weight,
+            "focus": req.body.focus
+        });
+        Workout.findByIdAndUpdate(id, updatedWorkout).then(() => { // Changed Book to Workout
+            res.redirect('/workoutlist'); // Changed '/bookslist' to '/workoutlist'
+        });
+    } catch (err) {
+        console.error(err);
+        res.render('Workout/list', { // Changed 'Book/list' to 'Workout/list'
+            error: 'Error on the server'
+        });
+    }
+});
+
 /* Delete Operation --> Get route to perform Delete Operation */
-router.get('/delete/:id',async(req,res,next)=>{
-    try{
-        let id=req.params.id;
-        Book.deleteOne({_id:id}).then(()=>{
-            res.redirect('/bookslist')
-        })
-    }
-    catch(error){
+router.get('/delete/:id', async (req, res, next) => {
+    try {
+        let id = req.params.id;
+        Workout.deleteOne({ _id: id }).then(() => { // Changed Book to Workout
+            res.redirect('/workoutlist'); // Changed '/bookslist' to '/workoutlist'
+        });
+    } catch (err) {
         console.error(err);
-        res.render('Book/list',{
-            error:'Error on the server'
-        })
+        res.render('Workout/list', { // Changed 'Book/list' to 'Workout/list'
+            error: 'Error on the server'
+        });
     }
 });
+
 module.exports = router;
