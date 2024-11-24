@@ -1,35 +1,41 @@
 <%- include ../Partials/header.ejs%>
 <%- include ../Partials/main_nav.ejs%>
-<!--Content for the edit Operation-->
-<div class="container"></div>
+<!-- Content for the Edit Operation -->
+<div class="container">
     <div class="row">
         <div class="offset-md-3 col-md-6">
             <h1><%= title %></h1>
             <form class="form" method="POST">
                 <div class="form-group">
-                    <label for="nameTextField">Book Title</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Book Title" name="Name" value="<%= Book.Name %>" required>
+                    <label for="dateTextField">Workout Date</label>
+                    <input type="date" class="form-control" id="dateTextField" placeholder="Enter the Workout Date" name="date" value="<%= Workout.date %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="authorTextField">Book Author</label>
-                    <input type="text" class="form-control" id="authorTextField" placeholder="Enter the Book Author" name="Author" value="<%= Book.Author %>" required>
+                    <label for="exerciseTextField">Exercise Name</label>
+                    <input type="text" class="form-control" id="exerciseTextField" placeholder="Enter the Exercise Name" name="exercise" value="<%= Workout.exercise %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="publishedTextField">Published</label>
-                    <input type="text" class="form-control" id="publishedTextField" placeholder="Enter the Published year" name="Published" value="<%= Book.Published %>" required>
+                    <label for="setsTextField">Number of Sets</label>
+                    <input type="number" class="form-control" id="setsTextField" placeholder="Enter the Number of Sets" name="sets" value="<%= Workout.sets %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="descriptionTextArea">Book Description</label>
-                    <textarea type="text" class="form-control" id="descriptionTextArea"  placeholder="enter the Book Description" name="Description" required><%= Book.Description %></textarea>
+                    <label for="repsTextField">Number of Reps</label>
+                    <input type="number" class="form-control" id="repsTextField" placeholder="Enter the Number of Reps" name="reps" value="<%= Workout.reps %>" required>
                 </div>
                 <div class="form-group">
-                    <label for="priceTextField">Price</label>
-                    <input type="text" class="form-control" id="priceTextField" placeholder="Book's Price" name="Price" value="<%= Book.Price %>" required>
+                    <label for="weightTextField">Weight Used (lbs)</label>
+                    <input type="number" class="form-control" id="weightTextField" placeholder="Enter the Weight Used" name="weight" value="<%= Workout.weight %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="focusTextField">Focus Area</label>
+                    <input type="text" class="form-control" id="focusTextField" placeholder="Enter the Focus Area (e.g., Legs, Arms)" name="focus" value="<%= Workout.focus %>" required>
                 </div>
                 <button class="btn btn-primary" type="submit">Submit
-                <i class="fas fa-edit"></i></button>  
-                <button class="btn btn-warning" type="submit">Cancel
-                    <i class="fas fa-undo"></i></button>    
+                    <i class="fas fa-edit"></i>
+                </button>  
+                <button class="btn btn-warning" type="reset">Cancel
+                    <i class="fas fa-undo"></i>
+                </button>    
             </form>
         </div>
     </div>

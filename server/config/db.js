@@ -1,1 +1,1 @@
-module.exports={"URI":"mongodb+srv:hashirsheikh:Hashy218@cluster0.2rg56.mongodb.net/Wtracker?retryWrites=true&w=majority"}
+module.exports={"URI":"mongodb+srv://hashirsheikh:Hashy218@cluster0.2rg56.mongodb.net/Wtracker?retryWrites=true&w=majority"}
