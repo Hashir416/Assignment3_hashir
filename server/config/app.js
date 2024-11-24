@@ -3,6 +3,11 @@ let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+let session = require('express-session');
+let passport = require('passport');
+let passportlocal = require('passport-local');
+let localtrategy = passportlocal.Strategy;
+let flash = require ('connect-flash');
 
 let app = express();
 let indexRouter = require('../routes/index');
@@ -17,13 +22,12 @@ app.set('view engine', 'ejs');
 const mongoose = require('mongoose');
 let DB = require('./db');
 // Point mongoose to the DB URI
-mongoose.connect(DB.URI);
+mongoose.connect(DB.URI, { useNewUrlParser: true, useUnifiedTopology: true }); // Unified and corrected mongoose connection options
 let mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error'));
 mongoDB.once('open', () => {
   console.log('Connected to MongoDB');
 });
-mongoose.connect(DB.URI, { useNewURIParser: true, useUnifiedTopology: true });
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -54,3 +58,4 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+
