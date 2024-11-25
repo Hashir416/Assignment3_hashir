@@ -6,12 +6,6 @@ let Workout = require('../model/Wtracker.js');
 let workoutController = require('../controllers/Wtracker.js');
 
 /* Get route for the workout tracker - Read Operation */
-/*
-GET,
-Post,
-Put --> Edit/Update
-*/
-/* Read Operation --> Get route for displaying the Workouts */
 router.get('/', async (req, res, next) => {
     try {
         const WorkoutList = await Workout.find(); 
@@ -26,20 +20,22 @@ router.get('/', async (req, res, next) => {
         });
     }
 });
+
 /* Create Operation --> Get route for displaying the Add Page */
 router.get('/add', async (req, res, next) => {
     try {
-        res.render('Workout/add', { // Changed 'Book/add' to 'Workout/add'
-            title: 'Add Workout' // Changed 'Add Book' to 'Add Workout'
+        res.render('Workout/add', {
+            title: 'Add Workout'
         });
     } catch (err) {
         console.error(err);
-        res.render('Workout/list', { // Changed 'Book/list' to 'Workout/list'
+        res.render('Workout/list', {
             error: 'Error on the server'
         });
     }
 });
 
+/* Create Operation --> Post route for processing the Add Page */
 router.post('/add', async (req, res, next) => {
     try {
         let newWorkout = Workout({
@@ -51,7 +47,7 @@ router.post('/add', async (req, res, next) => {
             "focus": req.body.focus
         });
         await Workout.create(newWorkout);
-        res.redirect('/workouts-list'); // Correct path
+        res.redirect('/workouts-list'); // Corrected path
     } catch (err) {
         console.error(err);
         res.render('Workout/list', {
@@ -64,10 +60,10 @@ router.post('/add', async (req, res, next) => {
 router.get('/edit/:id', async (req, res, next) => {
     try {
         const id = req.params.id;
-        const workoutToEdit = await Workout.findById(id); // Changed Book to Workout
-        res.render('Workout/edit', { // Changed 'Book/edit' to 'Workout/edit'
-            title: 'Edit Workout', // Changed 'Edit Book' to 'Edit Workout'
-            Workout: workoutToEdit // Changed Book to Workout
+        const workoutToEdit = await Workout.findById(id);
+        res.render('Workout/edit', {
+            title: 'Edit Workout',
+            Workout: workoutToEdit
         });
     } catch (err) {
         console.error(err);
@@ -79,21 +75,21 @@ router.get('/edit/:id', async (req, res, next) => {
 router.post('/edit/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
-        let updatedWorkout = Workout({ // Changed Book to Workout and updatedBook to updatedWorkout
+        let updatedWorkout = Workout({
             "_id": id,
-            "date": req.body.date, // Updated fields to match the Workout schema
+            "date": req.body.date,
             "exercise": req.body.exercise,
             "sets": req.body.sets,
             "reps": req.body.reps,
             "weight": req.body.weight,
             "focus": req.body.focus
         });
-        Workout.findByIdAndUpdate(id, updatedWorkout).then(() => { // Changed Book to Workout
-            res.redirect('/workoutlist'); // Changed '/bookslist' to '/workoutlist'
+        Workout.findByIdAndUpdate(id, updatedWorkout).then(() => {
+            res.redirect('/workouts-list'); // Corrected path
         });
     } catch (err) {
         console.error(err);
-        res.render('Workout/list', { // Changed 'Book/list' to 'Workout/list'
+        res.render('Workout/list', {
             error: 'Error on the server'
         });
     }
@@ -103,12 +99,11 @@ router.post('/edit/:id', async (req, res, next) => {
 router.get('/delete/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
-        Workout.deleteOne({ _id: id }).then(() => { // Changed Book to Workout
-            res.redirect('/workoutlist'); // Changed '/bookslist' to '/workoutlist'
-        });
+        await Workout.deleteOne({ _id: id });
+        res.redirect('/workouts-list'); // Corrected path
     } catch (err) {
         console.error(err);
-        res.render('Workout/list', { // Changed 'Book/list' to 'Workout/list'
+        res.render('Workout/list', {
             error: 'Error on the server'
         });
     }
