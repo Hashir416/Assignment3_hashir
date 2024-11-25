@@ -1,43 +1,43 @@
 <%- include ../Partials/header.ejs%>
 <%- include ../Partials/main_nav.ejs%>
 <!-- Content for Add Page -->
-<div class="container">
-    <div class="row">
-        <div class="offset-md-3 col-md-6">
-            <h1><%= title %></h1>
-            <form class="form" method="POST">
-                <div class="form-group">
-                    <label for="dateTextField">Workout Date</label>
-                    <input type="date" class="form-control" id="dateTextField" placeholder="Enter the Workout Date" name="date" required>
-                </div>
-                <div class="form-group">
-                    <label for="exerciseTextField">Exercise Name</label>
-                    <input type="text" class="form-control" id="exerciseTextField" placeholder="Enter the Exercise Name" name="exercise" required>
-                </div>
-                <div class="form-group">
-                    <label for="setsTextField">Number of Sets</label>
-                    <input type="number" class="form-control" id="setsTextField" placeholder="Enter the Number of Sets" name="sets" required>
-                </div>
-                <div class="form-group">
-                    <label for="repsTextField">Number of Reps</label>
-                    <input type="number" class="form-control" id="repsTextField" placeholder="Enter the Number of Reps" name="reps" required>
-                </div>
-                <div class="form-group">
-                    <label for="weightTextField">Weight Used (lbs)</label>
-                    <input type="number" class="form-control" id="weightTextField" placeholder="Enter the Weight Used" name="weight" required>
-                </div>
-                <div class="form-group">
-                    <label for="focusTextField">Focus Area</label>
-                    <input type="text" class="form-control" id="focusTextField" placeholder="Enter the Focus Area (e.g., Legs, Arms)" name="focus" required>
-                </div>
-                <button class="btn btn-primary" type="submit">Submit
-                    <i class="fas fa-edit"></i>
-                </button>  
-                <button class="btn btn-warning" type="reset">Cancel
-                    <i class="fas fa-undo"></i>
-                </button>    
-            </form>
-        </div>
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="col-md-6">
+        <h1 class="text-center"><%= title %></h1>
+        <form class="form" method="POST">
+            <div class="form-group mb-3">
+                <label for="dateTextField">Workout Date</label>
+                <input type="date" class="form-control" id="dateTextField" placeholder="Enter the Workout Date" name="date" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="exerciseTextField">Exercise Name</label>
+                <input type="text" class="form-control" id="exerciseTextField" placeholder="Enter the Exercise Name" name="exercise" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="setsTextField">Number of Sets</label>
+                <input type="number" class="form-control" id="setsTextField" placeholder="Enter the Number of Sets" name="sets" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="repsTextField">Number of Reps</label>
+                <input type="number" class="form-control" id="repsTextField" placeholder="Enter the Number of Reps" name="reps" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="weightTextField">Weight Used (lbs)</label>
+                <input type="number" class="form-control" id="weightTextField" placeholder="Enter the Weight Used" name="weight" required>
+            </div>
+            <div class="form-group mb-3">
+                <label for="focusTextField">Focus Area</label>
+                <input type="text" class="form-control" id="focusTextField" placeholder="Enter the Focus Area (e.g., Legs, Arms)" name="focus" required>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary" type="submit">
+                    Submit <i class="fas fa-check"></i>
+                </button>
+                <button class="btn btn-warning" type="reset">
+                    Cancel <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 <%- include ../Partials/footer.ejs%>
