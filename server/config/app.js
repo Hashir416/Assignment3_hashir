@@ -27,7 +27,21 @@ let mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error'));
 mongoDB.once('open', () => {
   console.log('Connected to MongoDB');
+
+//setting up flash 
+
 });
+app.use(session({
+  secret: "SomeSecret",
+  saveUninitialized: false,
+  resave: false
+}))
+//setting up flash and passports
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 app.use(logger('dev'));
 app.use(express.json());

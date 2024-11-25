@@ -1,0 +1,43 @@
+/* Header Section */
+.header-section {
+    background-color: whitesmoke;
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: fantasy;
+  }
+  
+  .header-section h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #343a40;
+  }
+  
+  /* Centered Navbar */
+  .navbar {
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .navbar-nav {
+    text-align: center;
+  }
+  
+  .navbar-brand {
+    margin-right: auto;
+    margin-left: auto;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #007bff !important;
+  }
+  
+  /* Adjust link styles */
+  .nav-link {
+    font-weight: 600;
+  }
+  
+  .nav-link:hover {
+    color: #007bff !important; /* Highlighted color on hover */
+  }
+  
