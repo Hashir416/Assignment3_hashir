@@ -5,18 +5,23 @@
     text-align: center;
     margin-bottom: 10px;
     font-family: fantasy;
+    margin-top: 20px; 
+    padding-top: 10px;
   }
   
   .header-section h1 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: #343a40;
+    margin-top: 20px; 
+    padding-top: 10px;
   }
   
   .navbar-nav {
     display: flex; /* Arrange links horizontally */
     justify-content: center; /* Center the links */
     gap: 15px; /* Add spacing between the links */
+    
   }
   
   .navbar-nav .nav-item {
@@ -36,3 +41,43 @@
     color: #343a40; /* Change text color on hover */
   }
   
+  /* Centering Content */
+.d-flex {
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px; 
+    padding-top: 10px;  
+}
+
+/* Buttons Styling */
+.btn {
+    margin: 5px;
+    padding: 20px;
+    background-color: #00ff15;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: black;
+}
+
+/* Table Styling */
+.table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+}
+.table th, .table td {
+    vertical-align: middle;
+    border: 1px solid black
+}
+.table-responsive {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
