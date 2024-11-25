@@ -13,31 +13,26 @@
     color: #343a40;
   }
   
-  /* Centered Navbar */
-  .navbar {
-    margin: 0 auto;
-    text-align: center;
-    justify-content: center;
-  }
-  
   .navbar-nav {
-    text-align: center;
+    display: flex; /* Arrange links horizontally */
+    justify-content: center; /* Center the links */
+    gap: 15px; /* Add spacing between the links */
   }
   
-  .navbar-brand {
-    margin-right: auto;
-    margin-left: auto;
-    font-weight: 600;
-    font-size: 1.5rem;
-    color: #007bff !important;
+  .navbar-nav .nav-item {
+    list-style: none; /* Remove bullet points */
   }
   
-  /* Adjust link styles */
-  .nav-link {
-    font-weight: 600;
+  .navbar-nav .nav-link {
+    color: #007bff; /* Set a default color for links */
+    text-decoration: none; /* Remove underline */
+    font-weight: 600; /* Make the text bold */
+    padding: 5px 10px; /* Add padding for spacing */
+    border-radius: 5px; /* Add slight rounding for hover effects */
   }
   
-  .nav-link:hover {
-    color: #007bff !important; /* Highlighted color on hover */
+  .navbar-nav .nav-link:hover {
+    background-color: #f8f9fa; /* Light background on hover */
+    color: #343a40; /* Change text color on hover */
   }
   
