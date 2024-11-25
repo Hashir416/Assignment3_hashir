@@ -52,24 +52,56 @@
     padding-top: 10px;  
 }
 
+/* Form Styling */
+
+.form
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px; 
+    padding: 10px;  
+    font-weight: 700;
+}
+
+.form-group
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px; 
+    padding: 5px;  
+    font-weight: 700;
+}
+
 /* Buttons Styling */
 .btn {
-    margin: 5px;
-    padding: 20px;
+    margin-bottom: 20px;
+    padding: 8px;
     background-color: #00ff15;
     color: #fff;
     text-align: center;
-    text-decoration: none;
+    text-decoration:ghostwhite;
     border-radius: 5px;
     font-weight: bold;
     border: black;
+    cursor: pointer;
+
 }
 
 /* Table Styling */
 .table {
-    width: 80%;
+    width: 75%;
     margin: auto;
     border-collapse: collapse;
+    border: 1px solid black;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: whitesmoke;
 }
 .table th, .table td {
     vertical-align: middle;

@@ -43,3 +43,11 @@ displayName:
     collection: "user"
 });
 
+//configuring options for user model
+
+let options = ({missingPasswordError:"Wrong Password"});
+User.plugin(passportLocalMongoose, options);
+module.exports.User = mongoose.model('User', User);
+
+
+

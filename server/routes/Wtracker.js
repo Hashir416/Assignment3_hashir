@@ -40,27 +40,26 @@ router.get('/add', async (req, res, next) => {
     }
 });
 
-/* Create Operation --> Post route for processing the Add Page */
 router.post('/add', async (req, res, next) => {
     try {
-        let newWorkout = Workout({ // Changed newBook to newWorkout and Book to Workout
-            "date": req.body.date, // Updated fields to match the Workout schema
+        let newWorkout = Workout({
+            "date": req.body.date,
             "exercise": req.body.exercise,
             "sets": req.body.sets,
             "reps": req.body.reps,
             "weight": req.body.weight,
             "focus": req.body.focus
         });
-        Workout.create(newWorkout).then(() => { // Changed Book.create to Workout.create
-            res.redirect('/workoutlist'); // Changed '/bookslist' to '/workoutlist'
-        });
+        await Workout.create(newWorkout);
+        res.redirect('/workouts-list'); // Correct path
     } catch (err) {
         console.error(err);
-        res.render('Workout/list', { // Changed 'Book/list' to 'Workout/list'
+        res.render('Workout/list', {
             error: 'Error on the server'
         });
     }
 });
+
 /* Update Operation --> Get route for displaying the Edit Page */
 router.get('/edit/:id', async (req, res, next) => {
     try {
